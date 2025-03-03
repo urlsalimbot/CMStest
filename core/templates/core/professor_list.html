@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Professors</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for professor in professors %}
+                        <tr>
+                            <td>{{ professor.employee_id }}</td>
+                            <td>{{ professor.user.get_full_name }}</td>
+                            <td>{{ professor.department.name }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No professors found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
